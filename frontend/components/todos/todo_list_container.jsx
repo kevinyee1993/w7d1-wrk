@@ -1,17 +1,21 @@
 import { connect } from 'react-redux';
-import { receiveTodo } from 'todo_actions';
+import { receiveTodo } from '../../actions/todo_actions';
 import todoList from './todo_list';
+import { bindActionCreators } from 'redux';
+
+
 
 const mapStateToProps = (state) => {
   return {
-    todo: state.todo
+    todos: state.todos
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    receiveTodo: (todo) => dispatch(receiveTodo(todo))
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  receiveTodo: (taskParams) => {
+    const actionFn = receiveTodo(taskParams);
+    dispatch(actionFn);
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(todoList);

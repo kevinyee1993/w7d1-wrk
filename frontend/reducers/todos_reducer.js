@@ -26,10 +26,9 @@ const todosReducer = (state = initialState, action) => {
       });
       return newState;
     case RECEIVE_TODO:
-      const newTodo =  { [action.todo.id]: action.todo };
-      const newState2 = Object.assign({}, state, newTodo);
-      console.log('hiu2');
-      return newState2;
+
+      console.log('i made it hiu2');
+      break;
     default:
       return state;
   }
